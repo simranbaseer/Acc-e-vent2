@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Location Tag Board</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+      <form action="home" method="POST">
+          {% csrf_token %}
+        <button type="submit">Go Back To Home Page</button>
+      </form>
+        <form action ="addlt" method="post">
+            {% csrf_token %}
+            <button type="submit" name="addtag">Add another tag</button>
+        </form> 
+        <table>
+           <tr>
+              <th>Tag Name</th>
+            </tr>
+            {% for b in obj %}
+            <form action="DelLocTag" method="POST">
+              {% csrf_token %}
+            <tr>
+              <td>{{ b.tagname }}
+              <input type="hidden" name="tagname" id="tagname" value = {{ b.tagname }}>
+              </td>
+              <td>
+                  <button type="submit">Delete Location Tag</button>
+                </td>
+            </tr>
+            </form>
+            {% endfor %}
+            </table>
+        <script src="" async defer></script>
+    </body>
+</html>

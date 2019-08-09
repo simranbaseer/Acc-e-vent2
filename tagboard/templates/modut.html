@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Modify User Tags</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <form action="AddUserTag" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="uid" id = "uid" value = {{ uid }}>
+            <button type="submit">Add Tag</button>
+        </form>
+        <form action="EditUserTags" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="uid" id = "uid" value = {{ uid }}>
+            <button type="submit">Go Back To User List</button>
+        </form>
+        <table>
+            <tr>    
+                <th>
+                    Tags
+                </th>
+                <th>
+                    Remove
+                </th>
+            </tr>
+            {% for tag in tags %}
+            <tr>
+                <form action="DeleteTag" method="post">
+                        {% csrf_token %}
+                    <td> 
+                            {{ tag }}
+                        <input type="hidden" name="tag" id = "tag" value = {{ tag }}>
+                        <input type="hidden" name="uid" id = "uid" value = {{ user }}>
+                    </td>
+                    <td>
+                        <button type="submit">delete</button>
+                    </td>
+                </form>
+            </tr>
+            {% endfor %}
+        </table>
+        
+        <script src="" async defer></script>
+    </body>
+</html>

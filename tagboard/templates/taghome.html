@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Tag Board Menu</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+       <form action="LocTagPage" method ="POST">
+           {% csrf_token %}
+           <button type="submit" name="GoToLocBoard">View All Existing Location Tags (View Location Tag Board)</button>
+       </form>
+       <form action="PartTagPage" method="POST">
+            {% csrf_token %}
+        <button type="submit" name="GoToPartBoard">View All Existing Participant Tags (View Participant Tag Board)</button>
+        </form>
+        <form action="EditUserTags" method="POST">
+                {% csrf_token %}
+            <button type="submit" name="TagAssign">Assign New Tags To Existing User</button>
+        </form>
+        <script src="" async defer></script>
+    </body>
+</html>

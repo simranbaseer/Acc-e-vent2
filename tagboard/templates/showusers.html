@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>All Users</title>
+</head>
+<body>
+    <p>{{error}}</p>
+    <form action="home" method="post">
+        {% csrf_token %}
+        <button type="submit">Go Back To Menu</button>
+    </form>
+    <table>
+        <tr>
+            <th>User ID</th>
+            <th>Modify User</th>
+        </tr>
+        {% for row in users %}
+        <tr>
+            <form action="ModifyUser" method="post" >
+                {% csrf_token %}
+            <td>
+               {{ row.uid }}
+               <input type="hidden" name="uid" id="uid" value= {{ row.uid }}>
+            </td>
+            <td>    
+                <button type="submit">Change Value</button> 
+            </td>
+            </form>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
