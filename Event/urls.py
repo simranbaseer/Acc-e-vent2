@@ -18,5 +18,7 @@ from django.urls import path
 from django.urls import include
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('tagboard/',include('tagboard.urls'))
+    path('tagboard/',include('tagboard.urls')),
+    path('send/', include('send.urls'))
+
 ]
